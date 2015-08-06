@@ -1,0 +1,14 @@
+br/com/fafidev/webteca/enums/TipoDocumento.class
+br/com/fafidev/webteca/entidade/PessoaFisica_.class
+br/com/fafidev/webteca/entidade/Usuario.class
+br/com/fafidev/webteca/enums/TipoPessoa.class
+br/com/fafidev/webteca/entidade/PessoaFisica.class
+br/com/fafidev/webteca/conexao/Conexao.class
+br/com/fafidev/webteca/entidade/PessoaJuridica_.class
+br/com/fafidev/webteca/entidade/Usuario_.class
+br/com/fafidev/webteca/negocio/RunBabyRun.class
+br/com/fafidev/webteca/interfaces/Gerenciavel.class
+br/com/fafidev/webteca/entidade/Pessoa.class
+br/com/fafidev/webteca/negocio/UsuarioDAO.class
+br/com/fafidev/webteca/entidade/PessoaJuridica.class
+br/com/fafidev/webteca/entidade/Pessoa_.class

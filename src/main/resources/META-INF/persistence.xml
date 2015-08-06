@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="webtecaPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>br.com.fafidev.webteca.entidade.Autor</class>
+    <class>br.com.fafidev.webteca.entidade.Categoria</class>
+    <class>br.com.fafidev.webteca.entidade.Penalidade</class>
+    <class>br.com.fafidev.webteca.entidade.PrazoDevolucao</class>
+    <class>br.com.fafidev.webteca.entidade.Publicacao</class>
+    <class>br.com.fafidev.webteca.entidade.Livro</class>
+    <class>br.com.fafidev.webteca.entidade.Editora</class>
+    <class>br.com.fafidev.webteca.entidade.Revista</class>
+    <class>br.com.fafidev.webteca.entidade.Jornal</class>
+    <class>br.com.fafidev.webteca.entidade.Monografia</class>
+    <class>br.com.fafidev.webteca.entidade.Artigo</class>
+    <class>br.com.fafidev.webteca.entidade.Usuario</class>
+    <class>br.com.fafidev.webteca.entidade.PessoaFisica</class>
+    <class>br.com.fafidev.webteca.entidade.PessoaJuridica</class>
+    <class>br.com.fafidev.webteca.entidade.Funcionario</class>
+    <class>br.com.fafidev.webteca.entidade.Professor</class>
+    <class>br.com.fafidev.webteca.entidade.Curso</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/biblioteca"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="abacaxi123"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
