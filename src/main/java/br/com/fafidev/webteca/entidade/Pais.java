@@ -1,30 +1,32 @@
 package br.com.fafidev.webteca.entidade;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author fernando
  */
 @Entity
-public class Professor implements Serializable {
+public class Pais implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    private PessoaFisica pessoaFisica;
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FormacaoProfessor> formacao;
+    private String nome;
+    private String ddi;
+
+    public Pais() {
+    }
+
+    public Pais(String nome, String ddi) {
+        this.nome = nome;
+        this.ddi = ddi;
+    }
 
     public Long getId() {
         return id;
@@ -34,20 +36,20 @@ public class Professor implements Serializable {
         this.id = id;
     }
 
-    public PessoaFisica getPessoaFisica() {
-        return pessoaFisica;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPessoaFisica(PessoaFisica pessoaFisica) {
-        this.pessoaFisica = pessoaFisica;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public List<FormacaoProfessor> getFormacao() {
-        return formacao;
+    public String getDdi() {
+        return ddi;
     }
 
-    public void setFormacao(List<FormacaoProfessor> formacao) {
-        this.formacao = formacao;
+    public void setDdi(String ddi) {
+        this.ddi = ddi;
     }
 
     @Override
@@ -60,10 +62,10 @@ public class Professor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Professor)) {
+        if (!(object instanceof Pais)) {
             return false;
         }
-        Professor other = (Professor) object;
+        Pais other = (Pais) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -72,7 +74,7 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.fafidev.webteca.entidade.Professor[ id=" + id + " ]";
+        return nome;
     }
 
 }

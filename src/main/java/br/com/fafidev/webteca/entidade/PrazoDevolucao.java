@@ -1,30 +1,40 @@
 package br.com.fafidev.webteca.entidade;
 
+import br.com.fafidev.webteca.enums.TipoPessoa;
+import br.com.fafidev.webteca.enums.TipoPublicacao;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author fernando
  */
 @Entity
-public class Professor implements Serializable {
+public class PrazoDevolucao implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    private PessoaFisica pessoaFisica;
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FormacaoProfessor> formacao;
+    private String nome;
+    private String descricao;
+    private Integer dias;
+    private BigDecimal valorAtraso;
+    private Integer suspensaoAtraso;
+    @Enumerated(EnumType.STRING)
+    private TipoPublicacao TipoPublicacao;
+    @Enumerated(EnumType.STRING)
+    private TipoPessoa TipoPessoa;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date vigencia;
 
     public Long getId() {
         return id;
@@ -32,22 +42,6 @@ public class Professor implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public PessoaFisica getPessoaFisica() {
-        return pessoaFisica;
-    }
-
-    public void setPessoaFisica(PessoaFisica pessoaFisica) {
-        this.pessoaFisica = pessoaFisica;
-    }
-
-    public List<FormacaoProfessor> getFormacao() {
-        return formacao;
-    }
-
-    public void setFormacao(List<FormacaoProfessor> formacao) {
-        this.formacao = formacao;
     }
 
     @Override
@@ -60,10 +54,10 @@ public class Professor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Professor)) {
+        if (!(object instanceof PrazoDevolucao)) {
             return false;
         }
-        Professor other = (Professor) object;
+        PrazoDevolucao other = (PrazoDevolucao) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -72,7 +66,7 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.fafidev.webteca.entidade.Professor[ id=" + id + " ]";
+        return "br.com.fafidev.webteca.entidade.PrazoDevolucao[ id=" + id + " ]";
     }
 
 }

@@ -15,16 +15,21 @@ import javax.persistence.OneToMany;
  * @author fernando
  */
 @Entity
-public class Professor implements Serializable {
+public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nome;
+    private String descricao;
     @ManyToOne
-    private PessoaFisica pessoaFisica;
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FormacaoProfessor> formacao;
+    private Categoria superior;
+    @OneToMany(mappedBy = "superior", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Categoria> filhos;
+
+    public Categoria() {
+    }
 
     public Long getId() {
         return id;
@@ -34,20 +39,36 @@ public class Professor implements Serializable {
         this.id = id;
     }
 
-    public PessoaFisica getPessoaFisica() {
-        return pessoaFisica;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPessoaFisica(PessoaFisica pessoaFisica) {
-        this.pessoaFisica = pessoaFisica;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public List<FormacaoProfessor> getFormacao() {
-        return formacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setFormacao(List<FormacaoProfessor> formacao) {
-        this.formacao = formacao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Categoria getSuperior() {
+        return superior;
+    }
+
+    public void setSuperior(Categoria superior) {
+        this.superior = superior;
+    }
+
+    public List<Categoria> getFilhos() {
+        return filhos;
+    }
+
+    public void setFilhos(List<Categoria> filhos) {
+        this.filhos = filhos;
     }
 
     @Override
@@ -60,10 +81,10 @@ public class Professor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Professor)) {
+        if (!(object instanceof Categoria)) {
             return false;
         }
-        Professor other = (Professor) object;
+        Categoria other = (Categoria) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -72,7 +93,7 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.fafidev.webteca.entidade.Professor[ id=" + id + " ]";
+        return nome;
     }
 
 }

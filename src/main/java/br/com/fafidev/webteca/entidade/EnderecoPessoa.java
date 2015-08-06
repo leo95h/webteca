@@ -1,30 +1,27 @@
 package br.com.fafidev.webteca.entidade;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author fernando
  */
 @Entity
-public class Professor implements Serializable {
+public class EnderecoPessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    private PessoaFisica pessoaFisica;
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FormacaoProfessor> formacao;
+    private Pessoa pessoa;
+    @ManyToOne
+    private Endereco endereco;
 
     public Long getId() {
         return id;
@@ -34,20 +31,20 @@ public class Professor implements Serializable {
         this.id = id;
     }
 
-    public PessoaFisica getPessoaFisica() {
-        return pessoaFisica;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setPessoaFisica(PessoaFisica pessoaFisica) {
-        this.pessoaFisica = pessoaFisica;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public List<FormacaoProfessor> getFormacao() {
-        return formacao;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setFormacao(List<FormacaoProfessor> formacao) {
-        this.formacao = formacao;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
@@ -60,10 +57,10 @@ public class Professor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Professor)) {
+        if (!(object instanceof EnderecoPessoa)) {
             return false;
         }
-        Professor other = (Professor) object;
+        EnderecoPessoa other = (EnderecoPessoa) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -72,7 +69,7 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.fafidev.webteca.entidade.Professor[ id=" + id + " ]";
+        return "br.com.fafidev.webteca.entidade.EnderecoPessoa[ id=" + id + " ]";
     }
 
 }

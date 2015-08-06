@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -15,16 +14,19 @@ import javax.persistence.OneToMany;
  * @author fernando
  */
 @Entity
-public class Professor implements Serializable {
+public class MatrizCurricular implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    private PessoaFisica pessoaFisica;
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FormacaoProfessor> formacao;
+    private String nome;
+    private String descricao;
+    @OneToMany(mappedBy = "matrizCurricular", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MatrizDisciplina> disciplinas;
+
+    public MatrizCurricular() {
+    }
 
     public Long getId() {
         return id;
@@ -34,20 +36,28 @@ public class Professor implements Serializable {
         this.id = id;
     }
 
-    public PessoaFisica getPessoaFisica() {
-        return pessoaFisica;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPessoaFisica(PessoaFisica pessoaFisica) {
-        this.pessoaFisica = pessoaFisica;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public List<FormacaoProfessor> getFormacao() {
-        return formacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setFormacao(List<FormacaoProfessor> formacao) {
-        this.formacao = formacao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public List<MatrizDisciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<MatrizDisciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     @Override
@@ -60,10 +70,10 @@ public class Professor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Professor)) {
+        if (!(object instanceof MatrizCurricular)) {
             return false;
         }
-        Professor other = (Professor) object;
+        MatrizCurricular other = (MatrizCurricular) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -72,7 +82,7 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.fafidev.webteca.entidade.Professor[ id=" + id + " ]";
+        return "br.com.fafidev.webteca.entidade.GradeCurricular[ id=" + id + " ]";
     }
 
 }

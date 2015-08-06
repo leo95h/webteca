@@ -4,7 +4,6 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.com.fafidev.webteca.entidade.Autor</class>
     <class>br.com.fafidev.webteca.entidade.Categoria</class>
-    <class>br.com.fafidev.webteca.entidade.Penalidade</class>
     <class>br.com.fafidev.webteca.entidade.PrazoDevolucao</class>
     <class>br.com.fafidev.webteca.entidade.Publicacao</class>
     <class>br.com.fafidev.webteca.entidade.Livro</class>
@@ -19,6 +18,30 @@
     <class>br.com.fafidev.webteca.entidade.Funcionario</class>
     <class>br.com.fafidev.webteca.entidade.Professor</class>
     <class>br.com.fafidev.webteca.entidade.Curso</class>
+    <class>br.com.fafidev.webteca.entidade.TituloAcademico</class>
+    <class>br.com.fafidev.webteca.entidade.FormacaoProfessor</class>
+    <class>br.com.fafidev.webteca.entidade.Instituicao</class>
+    <class>br.com.fafidev.webteca.entidade.Endereco</class>
+    <class>br.com.fafidev.webteca.entidade.Pais</class>
+    <class>br.com.fafidev.webteca.entidade.Estado</class>
+    <class>br.com.fafidev.webteca.entidade.Cidade</class>
+    <class>br.com.fafidev.webteca.entidade.Cep</class>
+    <class>br.com.fafidev.webteca.entidade.Logradouro</class>
+    <class>br.com.fafidev.webteca.entidade.CepLogradouro</class>
+    <class>br.com.fafidev.webteca.entidade.EnderecoPessoa</class>
+    <class>br.com.fafidev.webteca.entidade.Telefone</class>
+    <class>br.com.fafidev.webteca.entidade.TelefonePessoa</class>
+    <class>br.com.fafidev.webteca.entidade.AutorPublicacao</class>
+    <class>br.com.fafidev.webteca.entidade.Tag</class>
+    <class>br.com.fafidev.webteca.entidade.TagPublicacao</class>
+    <class>br.com.fafidev.webteca.entidade.Exemplar</class>
+    <class>br.com.fafidev.webteca.entidade.Emprestimo</class>
+    <class>br.com.fafidev.webteca.entidade.Reserva</class>
+    <class>br.com.fafidev.webteca.entidade.LimiteEmprestimo</class>
+    <class>br.com.fafidev.webteca.entidade.Aluno</class>
+    <class>br.com.fafidev.webteca.entidade.Turma</class>
+    <class>br.com.fafidev.webteca.entidade.Disciplina</class>
+    <class>br.com.fafidev.webteca.entidade.MatrizCurricular</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/biblioteca"/>
