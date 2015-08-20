@@ -22,4 +22,9 @@ public final class Conexao {
         }
         return em;
     }
+
+    public static void close() {
+        em.close();
+        factory.close();
+    }
 }
