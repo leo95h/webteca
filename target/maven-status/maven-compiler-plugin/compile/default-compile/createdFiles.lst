@@ -11,7 +11,6 @@ br/com/fafidev/webteca/entidade/Disciplina.class
 br/com/fafidev/webteca/conexao/Conexao.class
 br/com/fafidev/webteca/negocio/RunBabyRun.class
 br/com/fafidev/webteca/entidade/Exemplar.class
-br/com/fafidev/webteca/negocio/UsuarioDAO.class
 br/com/fafidev/webteca/entidade/Endereco.class
 br/com/fafidev/webteca/entidade/Professor.class
 br/com/fafidev/webteca/entidade/Estado.class
@@ -24,7 +23,6 @@ br/com/fafidev/webteca/enums/TipoPessoa.class
 br/com/fafidev/webteca/entidade/Autor.class
 br/com/fafidev/webteca/entidade/Publicacao.class
 br/com/fafidev/webteca/entidade/Cidade.class
-br/com/fafidev/webteca/interfaces/Gerenciavel.class
 br/com/fafidev/webteca/entidade/TelefonePessoa.class
 br/com/fafidev/webteca/entidade/MatrizDisciplina.class
 br/com/fafidev/webteca/controle/UsuarioControlador.class
@@ -35,6 +33,7 @@ br/com/fafidev/webteca/enums/TipoTitulacao.class
 br/com/fafidev/webteca/entidade/Aluno.class
 br/com/fafidev/webteca/entidade/Reserva.class
 br/com/fafidev/webteca/entidade/EnderecoPessoa.class
+br/com/fafidev/webteca/negocio/GenericDAO.class
 br/com/fafidev/webteca/entidade/FormacaoProfessor.class
 br/com/fafidev/webteca/enums/Periodo.class
 br/com/fafidev/webteca/entidade/Pessoa.class

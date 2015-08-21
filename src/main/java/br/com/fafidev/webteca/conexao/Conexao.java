@@ -13,18 +13,21 @@ public final class Conexao {
     private static EntityManagerFactory factory = null;
     private static EntityManager em = null;
 
-    public static EntityManager getEntityManager() {
+    private static EntityManagerFactory getEntityManagerFactory() {
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory("webtecaPU");
         }
+        return factory;
+    }
+
+    public static EntityManager getEntityManager() {
         if (em == null) {
-            em = factory.createEntityManager();
+            em = getEntityManagerFactory().createEntityManager();
         }
         return em;
     }
 
     public static void close() {
         em.close();
-        factory.close();
     }
 }
