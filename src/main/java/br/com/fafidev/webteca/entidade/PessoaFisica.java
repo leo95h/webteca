@@ -1,6 +1,6 @@
 package br.com.fafidev.webteca.entidade;
 
-import br.com.fafidev.webteca.enums.EstadoCivil;
+import br.com.fafidev.webteca.entidade.util.EstadoCivil;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;

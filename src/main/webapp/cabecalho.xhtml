@@ -2,10 +2,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:body>
         <ui:composition>
-            <h1>Cabeçalho</h1>
+            <b:navBar brand="Webteca" inverse="true" fixed="top" >
+                <b:navbarLinks>
+                    <b:navLink value="Home" href="/index.xhtml" ></b:navLink>
+                    <b:navLink value="Sobre" href="/pages/public/sobre.xhtml"></b:navLink>
+                    <b:navLink value="Ajuda" href="/pages/public/ajuda.xhtml"></b:navLink>
+                    <b:navLink value="Buscar" href="/pages/public/busca.xhtml"></b:navLink>
+                    <b:navLink value="Alunos" href="/pages/private/admin/aluno/lista.xhtml"></b:navLink>
+                </b:navbarLinks>
+                <h:form styleClass="navbar-form navbar-right">
+                    <div class="form-group">
+                        <b:inputText placeholder="Email" fieldSize="sm"/>
+                    </div>
+                    <div class="form-group">
+                        <b:inputText placeholder="Senha" fieldSize="sm"/>
+                    </div> 
+                    #{' '}
+                    <b:commandButton action="a" value="Login" look="success" size="sm"/>
+                    #{' '}
+                    <b:commandButton action="/pages/public/autocadastro.xhtml" value="Cadastro" look="primary" size="sm"/>
+                </h:form>
+            </b:navBar>
         </ui:composition>
     </h:body>
 </html>

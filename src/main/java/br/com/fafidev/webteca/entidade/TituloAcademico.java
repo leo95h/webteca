@@ -1,6 +1,6 @@
 package br.com.fafidev.webteca.entidade;
 
-import br.com.fafidev.webteca.enums.TipoTitulacao;
+import br.com.fafidev.webteca.entidade.util.TipoTitulacao;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

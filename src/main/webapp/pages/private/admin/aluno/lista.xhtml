@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="conteudo">
+                <b:jumbotron>
+                    <b:container>
+                        <br/>
+                        <br/>
+                        <p:panel id="Alunos" header="Alunos">
+                            <p:commandButton id="botaoNovo" value="Novo" action="#{alunoControlador.novoAluno()}" />
+                            <br/>
+                            <br/>
+                            <p:dataTable id="tablePublicacoes" value="#{alunoControlador.listaAlunos}" var="aluno" emptyMessage="Nenhum registro encontrado">
+                                <f:facet name="header">
+                                    Lista de alunos
+                                </f:facet>
+
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{aluno.pessoaFisica.nome}" />
+                                </p:column>
+
+                                <p:column headerText="Email">
+                                    <h:outputText value="#{aluno.pessoaFisica.email}" />
+                                </p:column>
+
+                                <p:column headerText="Nascimento">
+                                    <h:outputText value="#{aluno.pessoaFisica.nascimento}">
+                                        <f:convertDateTime locale="pt-br" pattern="dd/MM/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Registro Acadêmico">
+                                    <h:outputText value="#{aluno.registroAcademico}" />
+                                </p:column>
+
+                                <f:facet name="footer">
+                                    Total de alunos #{alunoControlador.listaAlunos.size()}.
+                                </f:facet>
+                            </p:dataTable>
+                        </p:panel>
+                    </b:container>
+                </b:jumbotron>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

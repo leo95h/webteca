@@ -1,7 +1,7 @@
 package br.com.fafidev.webteca.entidade;
 
-import br.com.fafidev.webteca.enums.TipoPessoa;
-import br.com.fafidev.webteca.enums.TipoPublicacao;
+import br.com.fafidev.webteca.entidade.util.TipoPessoa;
+import br.com.fafidev.webteca.entidade.util.TipoPublicacao;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;

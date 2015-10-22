@@ -1,12 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-        Página de autocadastro
+        <ui:composition template="/template.xhtml">
+            <ui:define name="conteudo">
+                <b:jumbotron>
+                    <b:container>
+                        <h:form id="formulario">
+                            <br/>
+                            <b:panel look="primary" title="Cadastre-se">
+                                <h:panelGrid id="gridFields" columns="2" cellpadding="5">
+                                    <h:outputText value="Nome:" />
+                                    <b:inputText fieldSize="md" value="#{alunoControlador.aluno.pessoaFisica.nome}" />
+                                    <h:outputText value="Email:" />
+                                    <b:inputText fieldSize="md" value="#{alunoControlador.aluno.pessoaFisica.email}" />
+                                    <h:outputText value="Nascimento:" />
+                                    <p:calendar value="#{alunoControlador.aluno.pessoaFisica.nascimento}" locale="pt-br" pattern="dd/MM/yyyy" />
+                                    <h:outputText value="Estado Civil:" />
+                                    <p:selectOneMenu value="#{alunoControlador.aluno.pessoaFisica.estadoCivil}" style="width: 200px">
+                                        <f:selectItems value="#{alunoControlador.estadosCivis}" />
+                                    </p:selectOneMenu>
+                                </h:panelGrid>
+                                <h:panelGrid id="gridButtons" columns="2" cellpadding="5" >
+                                    <b:commandButton action="a" value="Salvar" look="success" size="sm"/>
+                                    <b:commandButton action="a" value="Cancelar" look="danger" size="sm"/>
+                                </h:panelGrid>
+                            </b:panel>
+                        </h:form>
+                    </b:container>
+                </b:jumbotron>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

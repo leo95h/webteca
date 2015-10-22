@@ -5,13 +5,16 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:body>
-        <ui:composition>
-            <b:container>
-                <hr/>
-                <footer>
-                    <p>Fernando Paschualetto © Company 2014</p>
-                </footer>
-            </b:container>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="conteudo">
+                <b:jumbotron>
+                    <b:container>
+                        <h1>Webteca</h1>
+                        <p>Aqui vai ter ajuda pra vocês.
+                        </p>
+                    </b:container>
+                </b:jumbotron>
+            </ui:define>
         </ui:composition>
     </h:body>
 </html>

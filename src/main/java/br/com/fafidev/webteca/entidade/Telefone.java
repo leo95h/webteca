@@ -1,6 +1,6 @@
 package br.com.fafidev.webteca.entidade;
 
-import br.com.fafidev.webteca.enums.TipoTelefone;
+import br.com.fafidev.webteca.entidade.util.TipoTelefone;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

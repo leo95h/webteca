@@ -1,4 +1,4 @@
-package br.com.fafidev.webteca.enums;
+package br.com.fafidev.webteca.entidade.util;
 
 /**
  *

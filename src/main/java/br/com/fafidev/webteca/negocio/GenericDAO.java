@@ -1,26 +1,73 @@
 package br.com.fafidev.webteca.negocio;
 
+import br.com.fafidev.webteca.negocio.util.Conexao;
+import br.com.fafidev.webteca.negocio.util.ExcecaoNegocio;
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
  * @author fernando
  */
-public class GenericDAO<T> {
+public class GenericDAO<T> implements Serializable {
 
-    private T classe;
-
+    private Class classe;
     private EntityManager entityManager;
 
-    public EntityManager getEntityManager() {
-        return entityManager;
+    public GenericDAO(Class classe) {
+        this.classe = classe;
+        this.entityManager = Conexao.createInstance().getEntityManager();
     }
 
-    public void salvarNovo(T entity) {
-        entityManager.persist(entity);
+    public void save(T entity) {
+        try {
+            begin();
+            getEntityManager().persist(entity);
+            commit();
+        } catch (Exception ex) {
+            throw new ExcecaoNegocio("Erro ao salvar: " + ex.getMessage(), ex);
+        }
     }
-    
-    public T salvar(T entity) {
-        return entityManager.merge(entity);
+
+    public void update(T entity) {
+        begin();
+        getEntityManager().merge(entity);
+        commit();
+    }
+
+    public void delete(Object id) {
+        Object obj = findById(id);
+        begin();
+        getEntityManager().remove(obj);
+        commit();
+    }
+
+    public T findById(Object id) {
+        return (T) getEntityManager().find(classe, id);
+    }
+
+    public List<T> findAll() {
+        String hql = " from " + classe.getSimpleName() + " obj order by obj.id ";
+        Query q = getEntityManager().createQuery(hql);
+        return q.getResultList();
+    }
+
+    protected void begin() {
+        getEntityManager().getTransaction().begin();
+    }
+
+    protected void commit() {
+        getEntityManager().getTransaction().commit();
+        getEntityManager().close();
+    }
+
+    public Class getClasse() {
+        return classe;
+    }
+
+    public EntityManager getEntityManager() {
+        return this.entityManager;
     }
 }

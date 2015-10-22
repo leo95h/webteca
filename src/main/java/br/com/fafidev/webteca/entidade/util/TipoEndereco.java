@@ -1,22 +1,22 @@
-package br.com.fafidev.webteca.enums;
+package br.com.fafidev.webteca.entidade.util;
 
 /**
  *
  * @author fernando
  */
-public enum TipoTelefone {
+public enum TipoEndereco {
 
     RESIDENCIAL("Residencial"),
     COMERCIAL("Comercial"),
-    CELULAR("Celular");
+    VERANEIO("Veraneio"),
+    CORRESPONDENCIA("Correspondência");
     private final String descricao;
 
-    private TipoTelefone(String descricao) {
+    private TipoEndereco(String descricao) {
         this.descricao = descricao;
     }
 
     public String getDescricao() {
         return descricao;
     }
-
 }

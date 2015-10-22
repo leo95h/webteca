@@ -24,12 +24,40 @@ public class Aluno implements Serializable {
     @ManyToOne
     private Turma turma;
 
+    public Aluno() {
+        this.pessoaFisica = new PessoaFisica();
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRegistroAcademico() {
+        return registroAcademico;
+    }
+
+    public void setRegistroAcademico(String registroAcademico) {
+        this.registroAcademico = registroAcademico;
+    }
+
+    public PessoaFisica getPessoaFisica() {
+        return pessoaFisica;
+    }
+
+    public void setPessoaFisica(PessoaFisica pessoaFisica) {
+        this.pessoaFisica = pessoaFisica;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
     @Override

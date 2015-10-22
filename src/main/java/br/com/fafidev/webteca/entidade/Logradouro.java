@@ -1,6 +1,6 @@
 package br.com.fafidev.webteca.entidade;
 
-import br.com.fafidev.webteca.enums.TipoLogradouro;
+import br.com.fafidev.webteca.entidade.util.TipoLogradouro;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;

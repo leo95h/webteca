@@ -1,6 +1,6 @@
 package br.com.fafidev.webteca.entidade;
 
-import br.com.fafidev.webteca.enums.Periodo;
+import br.com.fafidev.webteca.entidade.util.Periodo;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
