@@ -34,6 +34,7 @@ public class AlunoControlador implements Serializable {
     public String salvarNovo() {
         alunoDAO.save(aluno);
         aluno = new Aluno();
+        alunoDAO = new AlunoDAO();
         return "lista.xhtml";
     }
 
