@@ -37,6 +37,13 @@ public class GenericDAO<T> implements Serializable {
         commit();
     }
 
+    public T merge(T entity) {
+        begin();
+        entity = getEntityManager().merge(entity);
+        commit();
+        return entity;
+    }
+
     public void delete(Object id) {
         Object obj = findById(id);
         begin();

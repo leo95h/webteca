@@ -1,13 +1,10 @@
 package br.com.fafidev.webteca.entidade;
 
 import br.com.fafidev.webteca.entidade.util.EstadoCivil;
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 
 /**
@@ -15,8 +12,7 @@ import javax.persistence.Temporal;
  * @author fernando
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class PessoaFisica extends Pessoa implements Serializable {
+public class PessoaFisica extends Pessoa {
 
     private String nome;
     @Temporal(javax.persistence.TemporalType.DATE)

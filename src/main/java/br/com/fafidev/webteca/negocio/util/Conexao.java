@@ -24,7 +24,7 @@ public final class Conexao {
         return instance;
     }
 
-    public static EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return factory.createEntityManager();
     }
 }
