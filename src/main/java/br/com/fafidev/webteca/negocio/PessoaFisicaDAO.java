@@ -1,6 +1,8 @@
 package br.com.fafidev.webteca.negocio;
 
 import br.com.fafidev.webteca.entidade.PessoaFisica;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -13,9 +15,8 @@ public class PessoaFisicaDAO extends GenericDAO<PessoaFisica> {
     }
 
     @Override
-    public PessoaFisica merge(PessoaFisica entity) {
-        System.out.println("PESSOA FÍSICA!");
-        return super.merge(entity);
+    protected Logger getLogger() {
+        return LoggerFactory.getLogger(this.getClass());
     }
 
 }
