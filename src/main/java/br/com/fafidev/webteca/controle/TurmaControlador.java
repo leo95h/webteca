@@ -36,7 +36,7 @@ public class TurmaControlador implements Serializable {
     }
 
     public List<Turma> getTurmas() {
-        return turmaDAO.findAll();
+        return turmaDAO.listAll();
     }
 
     public Turma getTurma() {

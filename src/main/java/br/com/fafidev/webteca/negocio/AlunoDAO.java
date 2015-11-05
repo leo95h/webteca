@@ -1,6 +1,8 @@
 package br.com.fafidev.webteca.negocio;
 
 import br.com.fafidev.webteca.entidade.Aluno;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -16,9 +18,8 @@ public class AlunoDAO extends GenericDAO<Aluno> {
     }
 
     @Override
-    public void save(Aluno entity) {
-        entity.setPessoaFisica(this.pessoaFisicaDAO.merge(entity.getPessoaFisica()));
-        super.save(entity);
+    protected Logger getLogger() {
+        return LoggerFactory.getLogger(this.getClass());
     }
 
 }

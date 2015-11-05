@@ -48,7 +48,7 @@ public class AlunoControlador implements Serializable {
     }
 
     public List<Aluno> getListaAlunos() {
-        return alunoDAO.findAll();
+        return alunoDAO.listAll();
     }
 
     public Aluno getAluno() {
