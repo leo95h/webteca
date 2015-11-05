@@ -32,6 +32,13 @@ public abstract class GenericDAO<T> implements Serializable {
         commitAndCloseTransaction();
     }
 
+    public T merge(T entity) {
+        beginTransaction();
+        entity = getEntityManager().merge(entity);
+        commitAndCloseTransaction();
+        return entity;
+    }
+
     public void delete(T entity) {
         beginTransaction();
         getEntityManager().remove(getEntityManager().merge(entity));
@@ -66,7 +73,7 @@ public abstract class GenericDAO<T> implements Serializable {
     }
 
     protected EntityManager getEntityManager() {
-        if (!this.entityManager.isOpen() || this.entityManager == null) {
+        if (this.entityManager == null) {
             getLogger().info("Closed or null EntityManager");
             this.entityManager = Conexao.createInstance().getEntityManager();
         }
