@@ -1,80 +1,81 @@
 package br.com.fafidev.webteca.negocio;
 
 import br.com.fafidev.webteca.negocio.util.Conexao;
-import br.com.fafidev.webteca.negocio.util.ExcecaoNegocio;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import org.slf4j.Logger;
 
 /**
  *
  * @author fernando
  */
-public class GenericDAO<T> implements Serializable {
+public abstract class GenericDAO<T> implements Serializable {
 
-    private Class classe;
+    private final Class classe;
     private EntityManager entityManager;
 
     public GenericDAO(Class classe) {
         this.classe = classe;
-        this.entityManager = Conexao.createInstance().getEntityManager();
     }
 
     public void save(T entity) {
-        try {
-            begin();
-            getEntityManager().persist(entity);
-            commit();
-        } catch (Exception ex) {
-            throw new ExcecaoNegocio("Erro ao salvar: " + ex.getMessage(), ex);
-        }
+        beginTransaction();
+        getEntityManager().persist(entity);
+        commitAndCloseTransaction();
     }
 
     public void update(T entity) {
-        begin();
+        beginTransaction();
         getEntityManager().merge(entity);
-        commit();
+        commitAndCloseTransaction();
     }
 
-    public T merge(T entity) {
-        begin();
-        entity = getEntityManager().merge(entity);
-        commit();
-        return entity;
-    }
-
-    public void delete(Object id) {
-        Object obj = findById(id);
-        begin();
-        getEntityManager().remove(obj);
-        commit();
+    public void delete(T entity) {
+        beginTransaction();
+        getEntityManager().remove(getEntityManager().merge(entity));
+        commitAndCloseTransaction();
     }
 
     public T findById(Object id) {
         return (T) getEntityManager().find(classe, id);
     }
 
-    public List<T> findAll() {
-        String hql = " from " + classe.getSimpleName() + " obj order by obj.id ";
+    public List<T> listAll() {
+        String hql = "from " + classe.getSimpleName() + " obj order by obj.id";
         Query q = getEntityManager().createQuery(hql);
         return q.getResultList();
     }
 
-    protected void begin() {
+    protected void beginTransaction() {
         getEntityManager().getTransaction().begin();
     }
 
-    protected void commit() {
+    protected void commitAndCloseTransaction() {
+        commit();
+        closeTransaction();
+    }
+
+    private void commit() {
         getEntityManager().getTransaction().commit();
+    }
+
+    private void closeTransaction() {
         getEntityManager().close();
+    }
+
+    protected EntityManager getEntityManager() {
+        if (!this.entityManager.isOpen() || this.entityManager == null) {
+            getLogger().info("Closed or null EntityManager");
+            this.entityManager = Conexao.createInstance().getEntityManager();
+        }
+        return this.entityManager;
     }
 
     public Class getClasse() {
         return classe;
     }
 
-    public EntityManager getEntityManager() {
-        return this.entityManager;
-    }
+    protected abstract Logger getLogger();
 }
