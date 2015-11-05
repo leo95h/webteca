@@ -18,6 +18,12 @@ public class AlunoDAO extends GenericDAO<Aluno> {
     }
 
     @Override
+    public void save(Aluno entity) {
+        entity.setPessoaFisica(pessoaFisicaDAO.merge(entity.getPessoaFisica()));
+        super.save(entity);
+    }
+
+    @Override
     protected Logger getLogger() {
         return LoggerFactory.getLogger(this.getClass());
     }

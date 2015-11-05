@@ -25,6 +25,7 @@ public class Aluno implements Serializable {
     private Turma turma;
 
     public Aluno() {
+        this.pessoaFisica = new PessoaFisica();
     }
 
     public Long getId() {
