@@ -75,6 +75,7 @@ public class InstituicaoControlador implements Serializable {
 
     public String prepararNovo() {
         newInstances();
+        edicao = true;
         return "edita";
     }
 
