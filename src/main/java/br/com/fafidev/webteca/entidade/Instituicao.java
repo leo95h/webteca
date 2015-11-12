@@ -21,6 +21,10 @@ public class Instituicao implements Serializable {
     @ManyToOne
     private PessoaJuridica pessoaJuridica;
 
+    public Instituicao() {
+        this.pessoaJuridica = new PessoaJuridica();
+    }
+
     public Long getId() {
         return id;
     }

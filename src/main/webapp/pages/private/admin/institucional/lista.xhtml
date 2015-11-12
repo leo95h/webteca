@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="conteudo">
+                <b:jumbotron>
+                    <b:container>
+                        <br/>
+                        <br/>
+                        <h:form id="formLista">
+                            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="false" />
+                            <p:panel id="institucional" header="Instituições">
+                                <p:commandButton id="botaoNovo" value="Novo" action="#{instituicaoControlador.prepararNovo()}" />
+                                <br/>
+                                <br/>
+                                <p:dataTable id="tablePublicacoes" value="#{instituicaoControlador.instituicoes}" var="ins" emptyMessage="Nenhum registro encontrado">
+                                    <f:facet name="header">
+                                        Lista de Instituições
+                                    </f:facet>
+
+                                    <p:column headerText="Nome Fantasia">
+                                        <h:outputText value="#{ins.pessoaJuridica.nomeFantasia}" />
+                                    </p:column>
+
+                                    <p:column headerText="Razão Social">
+                                        <h:outputText value="#{ins.pessoaJuridica.razaoSocial}" />
+                                    </p:column>
+
+                                    <p:column headerText="Fundação">
+                                        <h:outputText value="#{ins.pessoaJuridica.fundacao}">
+                                            <f:convertDateTime locale="pt-br" pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+
+                                    <p:column headerText="Email">
+                                        <h:outputText value="#{ins.pessoaJuridica.email}" />
+                                    </p:column>
+                                    <p:column headerText="Visualizar">
+                                        <p:commandButton id="btnVisualizar" value="Visualizar" action="#{instituicaoControlador.prepararVer(ins)}" ajax="false" />
+                                    </p:column>
+                                    <p:column headerText="Editar">
+                                        <p:commandButton id="btnEditar" value="Editar" action="#{instituicaoControlador.prepararEdicao(ins)}" ajax="false" />
+                                    </p:column>
+                                    <p:column headerText="Excluir">
+                                        <p:commandButton id="btnExcluir" value="Excluir" action="#{instituicaoControlador.excluir(ins)}" ajax="false" />
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Total de instituições: #{instituicaoControlador.instituicoes.size()}.
+                                    </f:facet>
+                                </p:dataTable>
+                            </p:panel>
+                        </h:form>
+                    </b:container>
+                </b:jumbotron>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

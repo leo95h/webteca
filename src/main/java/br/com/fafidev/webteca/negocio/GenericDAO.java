@@ -73,8 +73,8 @@ public abstract class GenericDAO<T> implements Serializable {
     }
 
     protected EntityManager getEntityManager() {
-        if (this.entityManager == null) {
-            getLogger().info("Closed or null EntityManager");
+        if (this.entityManager == null || !this.entityManager.isOpen()) {
+            getLogger().info("Null or closed EntityManager");
             this.entityManager = Conexao.createInstance().getEntityManager();
         }
         return this.entityManager;

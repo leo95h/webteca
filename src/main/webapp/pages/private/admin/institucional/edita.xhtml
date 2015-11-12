@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="conteudo">
+                <b:jumbotron>
+                    <b:container>
+                        <br/>
+                        <br/>
+                        <h:form>
+                            <p:panel id="panelInstituicao" header="Cadastro de Instituição">
+                                <h:panelGrid id="gridIns" columns="2" cellpadding="5" cellspacing="5">
+                                    <h:outputLabel value="Nome Fantasia:" />
+                                    <p:inputText value="#{instituicaoControlador.instituicao.pessoaJuridica.nomeFantasia}" 
+                                                 size="80" rendered="#{instituicaoControlador.edicao}" />
+                                    <h:outputText value="#{instituicaoControlador.instituicao.pessoaJuridica.nomeFantasia}"
+                                                  rendered="#{!instituicaoControlador.edicao}"/>
+                                    <h:outputLabel value="Razão Social:" />
+                                    <p:inputText value="#{instituicaoControlador.instituicao.pessoaJuridica.razaoSocial}" 
+                                                 size="80" rendered="#{instituicaoControlador.edicao}" />
+                                    <h:outputText value="#{instituicaoControlador.instituicao.pessoaJuridica.razaoSocial}"
+                                                  rendered="#{!instituicaoControlador.edicao}"/>
+                                    <h:outputLabel value="Email:" />
+                                    <p:inputText value="#{instituicaoControlador.instituicao.pessoaJuridica.email}" 
+                                                 size="80" rendered="#{instituicaoControlador.edicao}" />
+                                    <h:outputText value="#{instituicaoControlador.instituicao.pessoaJuridica.email}"
+                                                  rendered="#{!instituicaoControlador.edicao}"/>
+                                    <h:outputLabel value="Fundação:" />
+                                    <p:calendar value="#{instituicaoControlador.instituicao.pessoaJuridica.fundacao}" 
+                                                pattern="dd/MM/yyyy" rendered="#{instituicaoControlador.edicao}" />
+                                    <h:outputText value="#{instituicaoControlador.instituicao.pessoaJuridica.fundacao}"
+                                                  rendered="#{!instituicaoControlador.edicao}">
+                                        <f:convertDateTime locale="pt-br" pattern="dd/MM/yyyy" />
+                                    </h:outputText>
+                                </h:panelGrid>
+                                <h:panelGrid id="gridBotoes" columns="2">
+                                    <p:commandButton id="botaoSalvar" value="Salvar" action="#{instituicaoControlador.salvar()}" 
+                                                     update="@form" disabled="#{!instituicaoControlador.edicao}"/>
+                                    <p:commandButton id="botaoCancelar" value="Cancelar" action="#{instituicaoControlador.prepararLista()}" update="@form" />
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:form>
+                    </b:container>
+                </b:jumbotron>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
