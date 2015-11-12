@@ -1,6 +1,7 @@
 package br.com.fafidev.webteca.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -31,6 +32,9 @@ public class Pessoa implements Serializable {
     private List<TelefonePessoa> telefones;
 
     public Pessoa() {
+        this.enderecos = new ArrayList<>();
+        this.telefones = new ArrayList<>();
+        this.ativo = true;
     }
 
     public Long getId() {
