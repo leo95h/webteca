@@ -2,7 +2,8 @@ package br.com.fafidev.webteca.controle;
 
 import br.com.fafidev.webteca.controle.util.JsfUtil;
 import br.com.fafidev.webteca.entidade.Instituicao;
-import br.com.fafidev.webteca.negocio.InstituicaoDAO;
+import br.com.fafidev.webteca.entidade.Pais;
+import br.com.fafidev.webteca.negocio.PaisDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -14,22 +15,22 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class InstituicaoControlador implements Serializable {
+public class PaisControlador implements Serializable {
 
-    private Instituicao instituicao;
-    private InstituicaoDAO instituicaoDAO;
+    private Pais pais;
+    private PaisDAO paisDAO;
     private boolean edicao;
 
-    public InstituicaoControlador() {
+    public PaisControlador() {
         newInstances();
     }
 
     public String salvar() {
         try {
             if (edicao) {
-                instituicaoDAO.update(instituicao);
+                paisDAO.update(pais);
             } else {
-                instituicaoDAO.save(instituicao);
+                paisDAO.save(pais);
             }
             JsfUtil.addSuccessMessage("Instituição salva com sucesso!");
             return prepararLista();
@@ -41,7 +42,7 @@ public class InstituicaoControlador implements Serializable {
 
     public String excluir(Instituicao instituicao) {
         try {
-            instituicaoDAO.delete(instituicao);
+            paisDAO.delete(pais);
             JsfUtil.addSuccessMessage("Instituição removida com sucesso!");
             return prepararLista();
         } catch (Exception e) {
@@ -55,9 +56,9 @@ public class InstituicaoControlador implements Serializable {
         return "lista";
     }
 
-    public String prepararEdicao(Instituicao instituicao) {
+    public String prepararEdicao(Pais pais) {
         newInstances();
-        this.instituicao = instituicao;
+        this.pais = pais;
         edicao = true;
         return "edita";
     }
@@ -68,32 +69,32 @@ public class InstituicaoControlador implements Serializable {
         return "edita";
     }
 
-    public String prepararVer(Instituicao instituicao) {
+    public String prepararVer(Pais pais) {
         newInstances();
-        this.instituicao = instituicao;
+        this.pais = pais;
         edicao = false;
         return "edita";
     }
 
-    public List<Instituicao> getInstituicoes() {
-        return instituicaoDAO.listAll();
-    }
-
     private void newInstances() {
-        this.instituicao = new Instituicao();
-        this.instituicaoDAO = new InstituicaoDAO();
+        this.pais = new Pais();
+        this.paisDAO = new PaisDAO();
     }
 
-    public Instituicao getInstituicao() {
-        return instituicao;
+    public List<Pais> getPaises() {
+        return paisDAO.listAll();
     }
 
-    public void setInstituicao(Instituicao instituicao) {
-        this.instituicao = instituicao;
+    public Pais getPais() {
+        return pais;
     }
 
-    public InstituicaoDAO getInstituicaoDAO() {
-        return instituicaoDAO;
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public PaisDAO getPaisDAO() {
+        return paisDAO;
     }
 
     public boolean isEdicao() {
@@ -103,4 +104,5 @@ public class InstituicaoControlador implements Serializable {
     public void setEdicao(boolean edicao) {
         this.edicao = edicao;
     }
+
 }

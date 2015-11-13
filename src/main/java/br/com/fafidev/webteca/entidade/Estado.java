@@ -1,11 +1,14 @@
 package br.com.fafidev.webteca.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,8 +25,12 @@ public class Estado implements Serializable {
     private String uf;
     @ManyToOne
     private Pais pais;
+    @OneToMany
+    private List<Cidade> cidades;
 
     public Estado() {
+        this.pais = new Pais();
+        this.cidades = new ArrayList<>();
     }
 
     public Estado(String nome, String uf) {
@@ -61,6 +68,14 @@ public class Estado implements Serializable {
 
     public void setPais(Pais pais) {
         this.pais = pais;
+    }
+
+    public List<Cidade> getCidades() {
+        return cidades;
+    }
+
+    public void setCidades(List<Cidade> cidades) {
+        this.cidades = cidades;
     }
 
     @Override
